@@ -43,3 +43,9 @@ export async function postNewsletter(email) {
   return response.json();
 }
 
+export async function getTestimonials() {
+  const response = await fetch(`${BASE_URL}/api/v1/testimonials`)
+  if (!response.ok) throw new Error("Kunne ikke hente testimonials")
+  return response.json()
+}
+

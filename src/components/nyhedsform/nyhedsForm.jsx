@@ -17,7 +17,7 @@ export default function NyhedsForm() {
     )
 
     return (
-        <section className="pt-10 flex flex-col gap-5">
+        <section className="pt-10 col-start-2 flex flex-col gap-5">
             <h3 className="info-h3">Sign up for our newsletter</h3>
             <p>Sign up to receive the latest news and announcements from Believe Fitness</p>
             <form action={formAction} className="flex flex-col  gap-2">
