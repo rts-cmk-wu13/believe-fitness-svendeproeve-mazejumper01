@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getNews } from "../lib/dal";
+import NyhedsForm from "@/components/nyhedsform/nyhedsForm";
 
 export default async function Home() {
 
@@ -40,6 +41,8 @@ export default async function Home() {
         ))}
         
       </section>
+
+      <NyhedsForm />
    </main>
    </div>
   );
