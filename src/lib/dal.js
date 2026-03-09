@@ -6,6 +6,8 @@ import { revalidatePath } from "next/cache"
 
 const BASE_URL = process.env.API_BASE_URL;
 
+const BASE_URL = process.env.API_BASE_URL;
+
 export async function getAllEvents() {
     //Second line of defense (apart from proxy)
     const cookieStore = await cookies();
@@ -22,6 +24,7 @@ export async function getAllEvents() {
 }
 
 export async function getNews() {
+  const response = await fetch(`${BASE_URL}/api/v1/news`);
   const response = await fetch(`${BASE_URL}/api/v1/news`);
   if (!response.ok) throw new Error("could not fetch news")
   return response.json()
