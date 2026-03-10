@@ -37,3 +37,11 @@ body {
 .arrow {
   @apply w-10.75 h-10.75 border-white border rounded-full flex items-center justify-center cursor-pointer  text-2xl font-bold
 }
+
+.inpt-s {
+  @apply  border-gray-500 border rounded-full cursor-text p-3
+}
+
+.inpt-m {
+  @apply  border-gray-500 border rounded-2xl cursor-text p-3
+}

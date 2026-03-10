@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { getNews } from "../lib/dal";
-import NyhedsForm from "@/components/nyhedsform/nyhedsForm";
-import Slider from "@/components/slider";
+import NyhedsForm from "@/components/nyhedsform/NyhedsForm";
+import Slider from "@/components/Slider";
+import KontaktForm from "@/components/kontaktform/KontaktForm";
 
 export default async function Home() {
 
@@ -45,7 +46,10 @@ export default async function Home() {
 
       <NyhedsForm />
       <Slider />
+      <KontaktForm />
    </main>
+
+
     </>
   );
 }

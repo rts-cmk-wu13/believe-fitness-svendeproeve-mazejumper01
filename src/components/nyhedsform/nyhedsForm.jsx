@@ -28,7 +28,7 @@ export default function NyhedsForm() {
                         name="email"
                         placeholder="Enter your email"
                         defaultValue={state.values.email}
-                        className="max-w-63.75 h-11.25  rounded-full border-gray-400 border focus:outline-none focus:ring-0 p-2"
+                        className="inpt-s max-w-63.75  rounded-full border-gray-400 border focus:outline-none focus:ring-0 p-2"
                     />
 
                                 <button

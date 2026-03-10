@@ -21,12 +21,16 @@ export async function getAllEvents() {
     return data;
 }
 
+
+//Henter billeder text osv til homepage
 export async function getNews() {
   const response = await fetch(`${BASE_URL}/api/v1/news`);
   if (!response.ok) throw new Error("could not fetch news")
   return response.json()
 }
 
+
+//Tildmelder sig nyhedsbrev
 export async function postNewsletter(email) {
   const response = await fetch(`${BASE_URL}/api/v1/newsletter`, {
     method: "POST",
@@ -43,9 +47,24 @@ export async function postNewsletter(email) {
   return response.json();
 }
 
+//Henter testimonials
 export async function getTestimonials() {
   const response = await fetch(`${BASE_URL}/api/v1/testimonials`)
   if (!response.ok) throw new Error("Kunne ikke hente testimonials")
   return response.json()
 }
 
+
+export async function postMessages(data) {
+    const response = await fetch(`${BASE_URL}/api/v1/messages`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+      throw new Error("Noget gik galt ved afsendelse")
+    }
+
+      return response.json();
+  }
