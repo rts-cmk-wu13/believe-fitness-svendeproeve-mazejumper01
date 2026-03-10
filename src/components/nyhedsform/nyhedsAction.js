@@ -6,8 +6,8 @@ import { postNewsletter } from "@/lib/dal"
 const newsletterSchema = z.object({
   email: z
     .string()
-    .min(3, "Email er påkrævet")
-    .email("Ugyldig email adresse")
+    .min(3, "Email required")
+    .email("Invalid email address")
 })
 
 export async function subscribeToNewsletter(prevState, formData) {
@@ -30,13 +30,13 @@ export async function subscribeToNewsletter(prevState, formData) {
 
     return {
       values: { email: "" },
-      success: "Du er nu tilmeldt nyhedsbrevet"
+      success: "You are now subscribed to the newsletter"
     }
 
   } catch {
     return {
       values: rawData,
-      errors: { form: ["Kunne ikke tilmelde. Prøv igen senere."] }
+      errors: { form: ["Could not subscribe please try again later."] }
     }
   }
 }

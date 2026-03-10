@@ -12,5 +12,5 @@ return NextResponse.redirect(new URL('/no-access', request.url))
 // export default function proxy(request) { ... }
  
 export const config = {
-  matcher: ['/kalender/:path*', '/aktiviteter/:path*'],
+  matcher: ['/kalender/:path*', '/courses/:path*'],
 }

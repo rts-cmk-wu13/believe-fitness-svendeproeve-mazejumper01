@@ -4,9 +4,9 @@ import { z } from "zod"
 import { postMessages } from "@/lib/dal"
 
 const kontaktSchema = z.object({
-  name: z.string().min(2, "Navn er påkrævet"),
-  email: z.string().email("Ugyldig email adresse"),
-  message: z.string().min(5, "Besked skal være mindst 5 tegn")
+  name: z.string().min(2, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(5, "Message needs to be at least 5 charecters")
 })
 
 export async function sendKontaktMessage(prevState, formData) {
@@ -30,12 +30,12 @@ export async function sendKontaktMessage(prevState, formData) {
 
         return {
         values: { name: "", email: "", message: "" },
-        success: "Din besked er sendt. Vi vender tilbage hurtigst muligt."
+        success: "Your message has been sent. We will get back to you as soon as possible."
         }
     } catch (error) {
         return {
         values: rawData,
-        errors: { form: ["Kunne ikke sende besked. Prøv igen senere."] }
+        errors: { form: ["Could not send the message. Please try again later."] }
         }
 
     }

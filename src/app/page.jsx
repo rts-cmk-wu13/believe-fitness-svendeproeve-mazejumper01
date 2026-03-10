@@ -1,55 +1,46 @@
-import Image from "next/image";
-import { getNews } from "../lib/dal";
-import NyhedsForm from "@/components/nyhedsform/NyhedsForm";
-import Slider from "@/components/Slider";
-import KontaktForm from "@/components/kontaktform/KontaktForm";
 
-export default async function Home() {
 
-  const news = await getNews();
+"use client";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function SplashPage() {
+  const router = useRouter();
+  const images = ["/assets/bg1.png", "/assets/bg2.png"];
+  const [bgImage, setBgImage] = useState(images[0]);
+  const [showContent, setShowContent] = useState(false);
+
+  // Vælg tilfældigt billede
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    setBgImage(images[randomIndex]);
+
+    // Sæt animationen til at starte efter 700ms
+    const timer = setTimeout(() => setShowContent(true), 700);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <>
-  <header className="relative min-h-102.5 w-full bg-[url('/assets/heroimg.png')] bg-cover bg-center grid grid-cols-[20px_1fr_20px] justify-between items-end col-span-full">
-
-    <div className="col-start-2 mb-10">
-      <h1 className="text-4xl mb-3 font-bold text-[#f1c40e]">Welcome to Belive Fitness</h1>
-
-      <div className=" flex gap-4 ">
-        <button className=" btn w-28.25 h-13.25 ">classes</button>
-        <button className="btn w-28.25 h-13.25">log in</button>
+    <div
+      className="w-screen h-screen bg-cover bg-center grid grid-cols-[20px_1fr_20px]  pb-10 items-end"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div
+        className={` transition-all duration-700 grid grid-rows-3 col-start-2 ${
+          showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+        }`}
+      >
+        <h1 className="text-6xl font-bold w-[7ch] text-[#f1c40e] mb-4">
+          Belive fitness
+        </h1>
+        <button
+          onClick={() => router.push("/home")}
+          className="btn row-start-3 w-45 mx-auto max-h-12 text-sm"
+        >
+          start training
+        </button>
       </div>
     </div>
-
-  </header>
-
-
-   <main className="col-start-2 grid grid-cols-[20px_1fr_20px]">
-      <h2 className="text-[#f1c40e] col-start-2 text-6xl font-bold py-5">News</h2>
-      <section className="flex flex-col col-start-2 gap-20">
-
-
-        {news.map((item) => (
-          <article key={item.id} className="flex  flex-col gap-4">
-            <h3 className="info-h3 ">{item.title}</h3>
-            <Image 
-              src={item.asset.url}
-              width={500}
-              height={300}
-              alt={item.title}
-            />
-            <p>{item.text}</p>
-          </article>
-
-        ))}
-        
-      </section>
-
-      <NyhedsForm />
-      <Slider />
-      <KontaktForm />
-   </main>
-
-
-    </>
   );
 }
