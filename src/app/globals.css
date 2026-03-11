@@ -45,3 +45,7 @@ body {
 .inpt-m {
   @apply  border-gray-500 border rounded-2xl cursor-text p-3
 }
+
+.highlight {
+  @apply  text-[#f1c40e]
+}

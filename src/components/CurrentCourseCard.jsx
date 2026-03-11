@@ -1,60 +1,63 @@
 "use client";
 import Link from "next/link";
-import { leaveCourse } from "@/lib/dal";
-import { useState } from "react";
+import { leaveCourse, getCourseById } from "@/lib/dal";
+import { useState, useEffect } from "react";
 
 export default function CurrentCourseCard({ course, isAdmin }) {
-   const [isJoined, setIsJoined] = useState(true);
+  const [isJoined, setIsJoined] = useState(true);
+  const [fullCourse, setFullCourse] = useState(course);
 
- async function handleLeave() {
+  useEffect(() => {
+    if (isAdmin) {
+      async function fetchFullCourse() {
+        try {
+          const data = await getCourseById(course.id); // use DAL helper
+          setFullCourse(data);
+        } catch (error) {
+          console.error("Failed to fetch course data:", error);
+        }
+      }
+      fetchFullCourse();
+    }
+  }, [course.id, isAdmin]);
+
+  async function handleLeave() {
     try {
       await leaveCourse(course.id);
       setIsJoined(false); 
-
     } catch (error) {
       console.error(error);
-      alert("Noget gik galt ved afmelding");
+      alert("Something went wrong while leaving the class");
     }
   }
-
 
   if (!isJoined) return null;
 
   return (
-    <div className="bg-white text-black opacity-80 p-4 rounded shadow flex flex-col justify-between">
+    <div className="p-4 border-gray-500 border rounded-2xl flex flex-col justify-between">
       <h3 className="font-bold text-xl">{course.className}</h3>
       <p>{course.classDay} - {course.classTime}</p>
 
       {isAdmin ? (
         <>
           <p>Max. participants: {course.maxParticipants}</p>
-          <p>Tilmeldte: {course.users?.length || 0}</p>
-          <Link href={`/deltagerListe/${course.id}`}>
-            <button className="btn px-4 ">
-              participants
-            </button>
-          </Link>
+          <p>Joined: {fullCourse.users ? fullCourse.users.length : 0}</p>
+          <div className="flex gap-2 mt-2">
+            <Link href={`/deltagerListe/${course.id}`}>
+              <button className="btn px-4">Participants</button>
+            </Link>
+          </div>
         </>
       ) : (
-        <>
+        <div className="flex justify-between">
           <Link href={`/courses/${course.id}`}>
-            <button className="btn px-4 ">
-              vis class
-            </button>
+            <button className="btn px-4">Show Class</button>
           </Link>
-
-
-
-        </>
+          <button onClick={handleLeave} className="btn px-4">
+            Leave
+          </button>
+        </div>
       )}
-
-            <button
-        onClick={handleLeave}
-        className="btn px-4"
-      >
-        leave
-      </button>
-
     </div>
   );
 }

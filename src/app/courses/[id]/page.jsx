@@ -1,7 +1,7 @@
 "use server";
 
 import { getCourseById, getUserById } from "@/lib/dal";
-import { joinCourse } from "@/lib/dal"
+import { joinCourse, leaveCourse  } from "@/lib/dal"
 import { cookies } from "next/headers";
 
 export default async function CourseDetailPage({ params }) {
@@ -46,8 +46,8 @@ export default async function CourseDetailPage({ params }) {
             <p>{course.classDescription}</p>
 
                       {isJoined ? (
-            <form  className="none">
-
+            <form  className="hidden">
+              <button></button>
             </form>
           ) : (
             <form action={handleJoin} className="col-start-2 mb-7">

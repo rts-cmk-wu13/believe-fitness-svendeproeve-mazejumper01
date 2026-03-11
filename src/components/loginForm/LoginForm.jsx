@@ -30,7 +30,7 @@ export default function LoginForm() {
 
             
             { state.errors?.form && <p>{state.errors.form}</p>}
-            <button type="submit" disabled={isPending} className="btn self-center disabled:opacity-50">{ isPending ? "Logging in..." : "Logged in"}</button>
+            <button type="submit" disabled={isPending} className="btn self-center disabled:opacity-50">{ isPending ? "Logging in..." : "Log in"}</button>
         </form>
         </section>
     )
