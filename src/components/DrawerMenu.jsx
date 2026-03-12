@@ -15,11 +15,11 @@ export default function DrawerMenu() {
   ]
 
   return (
-    <>
+    <div>
      
       <button
         onClick={() => setOpen(!open)}
-        className="fixed top-6 right-6 z-60 text-3xl">
+        className="relative  z-60 text-3xl">
         {open ? "X" : "="}
       </button>
 
@@ -55,6 +55,6 @@ export default function DrawerMenu() {
           </nav>
         </div>
       </div>
-    </>
+    </div>
   )
 }

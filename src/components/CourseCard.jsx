@@ -7,7 +7,7 @@ export default function CourseCard({ course, size = "small" }) {
   const isLarge = size === "large";
 
   return (
-    <div className={`${isLarge ? "w-full h-105" : "w-32 h-36"} flex`}>
+    <div className={`${isLarge ? "w-full h-101" : "w-32 h-36"} flex`}>
       <Link
         href={`/courses/${course.id}`}
         aria-labelledby={"course-card-" + course.id}

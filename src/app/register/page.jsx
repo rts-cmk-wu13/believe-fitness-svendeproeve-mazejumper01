@@ -1,4 +1,5 @@
 import RegisterForm from "@/components/registerForm/registerForm.jsx";
+import RegLogHeader from "@/components/RegLogHeader";
 
 
 export default function Register() {
@@ -6,8 +7,8 @@ export default function Register() {
         <main>
 
 
-            <div className="grid grid-cols-[10px_1fr_10px] gap-5">
-                <h1 className="col-start-2 text-4xl">Opret ny bruger</h1>
+            <div className="page-grid mt-10  gap-5">
+                <RegLogHeader />
                 <RegisterForm />
             </div>
         </main>

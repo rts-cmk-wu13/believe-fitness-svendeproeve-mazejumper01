@@ -53,3 +53,7 @@ body {
 .b-prim {
   @apply  bg-[#f1c40e]
 }
+
+.page-grid {
+  @apply grid grid-cols-[20px_1fr_20px];
+}

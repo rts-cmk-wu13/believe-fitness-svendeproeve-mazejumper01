@@ -23,7 +23,7 @@ export default function SplashPage() {
 
   return (
     <div
-      className="w-screen h-screen bg-cover bg-center grid grid-cols-[20px_1fr_20px]  pb-10 items-end"
+      className="w-screen h-screen bg-cover bg-center page-grid  pb-10 items-end"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div

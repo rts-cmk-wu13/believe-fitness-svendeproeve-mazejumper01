@@ -3,6 +3,7 @@ import { getUserById, getAllCourses } from "@/lib/dal";
 import CurrentCourseCard from "@/components/CurrentCourseCard";
 import Link from "next/link";
 import DrawerMenu from "@/components/DrawerMenu";
+import Image from "next/image";
 
 export default async function Page() {
   const cookieStore = await cookies();
@@ -36,28 +37,27 @@ export default async function Page() {
   }
 
   return (
-    <main className="grid grid-cols-[10px_1fr_10px]">
+     <main className="page-grid">
+      <header className="col-start-2 grid ">
+        <div className=" col-span-3 my-10 flex justify-between">
+            <h1 className="col-start-1 grid-cols-[1fr_1fr_1fr] text-2xl ">My profile</h1>
+          
 
-      <DrawerMenu />
-
-      <h1 className="col-start-2 text-center text-2xl py-5 mt-2">
-        My Profile
-      </h1>
-
-      <div className="bg-white col-start-1 col-span-3 text-3xl text-black flex flex-col gap-4 justify-center items-center rounded shadow">
-        <p>{user.userFirstName} {user.userLastName}</p>
-        <p>{user.role}</p>
-      </div>
+          
+            <DrawerMenu />
+        </div>
+        
+          <div className="grid grid-cols-[4rem_1fr] col-start-1 col-span-3   ">
+            <Image className=" b-prim p-2 rounded-full row-span-2" src="/assets/user.svg" width={60} height={60} alt="Bruger ikon" />
+            <p className="col-start-2 text-xl ps-2"> {user.userFirstName} {user.userLastName}</p>
+            <p  className="col-start-2 ps-2"> {user.role}</p>
+          </div>
+        </header>
 
       <section className="mt-8 col-start-2">
 
         <div className="flex justify-between items-center mb-4">
 
-          <h2 className="text-2xl">
-            {user.role === "admin"
-              ? "All classes"
-              : "Your classes"}
-          </h2>
 
           {user.role === "admin" && (
             <Link href="/createCourse">

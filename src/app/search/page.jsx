@@ -44,7 +44,7 @@ export default function Page() {
   }, [search, courses]);
 
   return (
-    <main className="grid grid-cols-[10px_1fr_10px] pb-20">
+    <main className="page-grid pb-20">
       <section className="w-full mt-10 flex flex-col col-start-2 gap-10 max-w-3xl overflow-hidden">
 
       
@@ -102,7 +102,7 @@ export default function Page() {
         )}
 
        
-        <div className="grid grid-cols-[20px_1fr_20px]">
+        <div className="page-grid">
           <h2 className="text-2xl font-bold col-start-2">Popular trainers</h2>
 
           {trainers.map((trainer) => (

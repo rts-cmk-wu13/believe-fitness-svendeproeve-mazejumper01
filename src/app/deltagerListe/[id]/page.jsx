@@ -20,15 +20,22 @@ export default async function Page({ params }) {
 
   return (
     <>
-    <main className="grid grid-cols-[20px_1fr_20px]">
-       <DrawerMenu />
-      <h1 className="col-start-2  text-2xl py-5">My profile</h1>
-    
-      <div className="grid grid-cols-[20px_4rem_1fr_20px] col-start-1 col-span-3  justify-center items-center ">
-        <Image className="col-start-2 b-prim p-2 rounded-full row-span-2" src="/assets/user.svg" width={60} height={60} alt="Bruger ikon" />
-        <p className="col-start-3 text-xl ps-2">Name: {user.userFirstName} {user.userLastName}</p>
-        <p  className="col-start-3 ps-2">Role: {user.role}</p>
-      </div>
+    <main className="page-grid">
+       <header className="col-start-2 grid ">
+              <div className=" col-span-3 my-10 flex justify-between">
+                  <h1 className="col-start-1 grid-cols-[1fr_1fr_1fr] text-2xl ">My profile</h1>
+                
+      
+                
+                  <DrawerMenu />
+              </div>
+              
+                <div className="grid grid-cols-[4rem_1fr] col-start-1 col-span-3   ">
+                  <Image className=" b-prim p-2 rounded-full row-span-2" src="/assets/user.svg" width={60} height={60} alt="Bruger ikon" />
+                  <p className="col-start-2 text-xl ps-2"> {user.userFirstName} {user.userLastName}</p>
+                  <p  className="col-start-2 ps-2"> {user.role}</p>
+                </div>
+              </header>
 
       <div className="col-start-2 pt-8 flex flex-col gap-8"> 
         <h2 className="text-2xl font-bold ">{course.className}</h2>
@@ -36,13 +43,13 @@ export default async function Page({ params }) {
         {course.users && course.users.length > 0 ? (
           <ul>
             {course.users.map(user => (
-              <li className="bg-white  opacity-80 p-4 rounded shadow flex gap-5 justify-between" key={user.id}>
+              <li className="inpt-s p-4 flex gap-5" key={user.id}>
                 <div className="flex gap-2">
                  
 
                 <p>{user.userFirstName} {user.userLastName}</p>
                 </div>
-                <p>{user.age} år</p>
+
 
               </li>
               

@@ -1,4 +1,5 @@
 import LoginForm from "@/components/loginform/LoginForm.jsx";
+import RegLogHeader from "@/components/RegLogHeader";
 
 import Link from "next/link";
 
@@ -7,16 +8,11 @@ export default function Login() {
 
         <main >
 
-
-            <div className="grid grid-cols-[20px_1fr_20px]  gap-5 mt-10">
+        
+            <div className="page-grid  gap-5 mt-10">
                 
-                 <h1 className="highlight font-bold col-start-2 max-w-[7ch] text-6xl">Belive Fitness</h1>
-                 <div className="col-span-full gap-x-5 items-center grid grid-cols-[20px_1fr_20px]">
-                 <div className="w-7.75 h-0.5 col-start-1  bg-black"></div>
-                 
-                    
-                    <h2 className="text-xl  font-bold">train like a pro</h2>
-                    </div>
+                 <RegLogHeader />
+
 
 
 

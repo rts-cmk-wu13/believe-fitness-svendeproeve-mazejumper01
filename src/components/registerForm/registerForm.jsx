@@ -18,31 +18,33 @@ export default function RegisterForm() {
     const [state, formAction, isPending] = useActionState(registerUser, initialState)
 
     return (
-        <section className="col-start-2">
-            <form className="flex flex-col gap-2" action={formAction} noValidate>
+        <section className="col-start-2 mt-10">
+            
+            <form className="flex flex-col gap-5" action={formAction} noValidate>
+                <h2 className="font-bold text-lg">Sign up as a new user</h2>
                 <input 
-                    className="inpt" 
+                    className="inpt-s" 
                     type="text" 
                     name="userFirstName" 
-                    placeholder="Fornavn" 
+                    placeholder="first name" 
                     defaultValue={state.values.userFirstName} 
                 />
                 {state.errors?.userFirstName && <p>{state.errors.userFirstName}</p>}
 
                 <input 
-                    className="inpt" 
+                    className="inpt-s" 
                     type="text" 
                     name="userLastName" 
-                    placeholder="Efternavn" 
+                    placeholder="last name" 
                     defaultValue={state.values.userLastName} 
                 />
-                {state.errors?.userLastName && <p>{state.errors.lastnuserLastNameame}</p>}
+                {state.errors?.userLastName && <p>{state.errors.userLastName}</p>}
 
                 <input 
-                    className="inpt" 
+                    className="inpt-s" 
                     type="text" 
                     name="username" 
-                    placeholder="Brugernavn" 
+                    placeholder="username" 
                     defaultValue={state.values.username} 
                 />
                 {state.errors?.username && <p>{state.errors.username}</p>}
@@ -50,19 +52,19 @@ export default function RegisterForm() {
 
 
                 <input 
-                    className="inpt" 
+                    className="inpt-s" 
                     type="password" 
                     name="password" 
-                    placeholder="Adgangskode" 
+                    placeholder="password" 
                     defaultValue={state.values.password} 
                 />
                 {state.errors?.password && <p>{state.errors.password}</p>}
 
                 <input 
-                    className="inpt" 
+                    className="inpt-s" 
                     type="password" 
                     name="confirmPassword" 
-                    placeholder="Gentag adgangskode" 
+                    placeholder="repeat password" 
                     defaultValue={state.values.confirmPassword} 
                 />
                 {state.errors?.confirmPassword && <p>{state.errors.confirmPassword}</p>}
@@ -72,7 +74,7 @@ export default function RegisterForm() {
                 <button 
                     type="submit" 
                     disabled={isPending} 
-                    className="btn self-center disabled:opacity-50"
+                    className="btn w-full self-center disabled:opacity-50"
                 >
                     {isPending ? "Opretter bruger..." : "Opret bruger"}
                 </button>

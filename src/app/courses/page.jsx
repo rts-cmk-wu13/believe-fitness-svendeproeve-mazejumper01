@@ -28,12 +28,21 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="grid grid-cols-[10px_1fr_10px] pb-20">
+    <>
+    <header className="page-grid ">
+            <div className=" col-start-2 my-10 flex justify-between">
+                <h1 className="col-start-1  text-2xl ">Popular classes</h1>
+              
+    
+              
+                <DrawerMenu />
+            </div>
+            
+            </header>
+    <main className="page-grid pb-20">
       <section className="w-full flex flex-col col-start-2 gap-10 max-w-3xl mt-5 overflow-hidden">
 
-        <DrawerMenu />
-
-        <h1 className="text-3xl font-bold">Classes</h1>
+      
 
         {loading ? (
           <p>Loading classes...</p>
@@ -58,5 +67,6 @@ export default function Page() {
         )}
       </section>
     </main>
+    </>
   );
 }

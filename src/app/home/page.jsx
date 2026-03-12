@@ -11,7 +11,7 @@ export default async function Home() {
   const news = await getNews();
   return (
     <>
-  <header className="relative min-h-102.5 w-full bg-[url('/assets/heroimg.png')] bg-cover bg-center grid grid-cols-[20px_1fr_20px] justify-between items-end col-span-full">
+  <header className="relative min-h-102.5 w-full bg-[url('/assets/heroimg.png')] bg-cover bg-center page-grid justify-between items-end col-span-full">
 
     <div className="col-start-2 mb-10 mt-5">
       <DrawerMenu />
@@ -31,7 +31,7 @@ export default async function Home() {
   </header>
 
 
-   <main className="col-start-2 grid grid-cols-[20px_1fr_20px]">
+   <main className="col-start-2 page-grid">
       <h2 className="text-[#f1c40e] col-start-2 text-6xl font-bold py-5">News</h2>
       <section className="flex flex-col col-start-2 gap-20">
 

@@ -40,7 +40,7 @@ export default async function CourseDetailPage({ params }) {
     <>
       <main className="grid  gap-6">
         <div
-          className="grid grid-cols-[20px_1fr_20px] max-w-100% h-120.5 items-end  bg-cover bg-center"
+          className="page-grid max-w-100% h-120.5 items-end  bg-cover bg-center"
           style={{ backgroundImage: `url(${course.asset?.url})` }}
         >
             <DrawerMenu />
@@ -48,7 +48,7 @@ export default async function CourseDetailPage({ params }) {
             <h1 className="text-4xl col-start-2 max-w-60 mb-30 font-bold text-[#f1c40e]">{course.className}</h1>
         </div>
 
-        <div className="grid grid-cols-[20px_1fr_20px]">
+        <div className="page-grid">
           <div className="col-start-2">
             
             <p>{course.classDay} - {course.classTime}</p>
