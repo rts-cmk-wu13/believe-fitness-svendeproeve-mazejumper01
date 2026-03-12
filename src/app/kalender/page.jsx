@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { getUserById, getAllCourses } from "@/lib/dal";
 import CurrentCourseCard from "@/components/CurrentCourseCard";
 import Link from "next/link";
+import DrawerMenu from "@/components/DrawerMenu";
 
 export default async function Page() {
   const cookieStore = await cookies();
@@ -37,7 +38,9 @@ export default async function Page() {
   return (
     <main className="grid grid-cols-[10px_1fr_10px]">
 
-      <h1 className="col-start-2 text-center text-2xl py-5">
+      <DrawerMenu />
+
+      <h1 className="col-start-2 text-center text-2xl py-5 mt-2">
         My Profile
       </h1>
 

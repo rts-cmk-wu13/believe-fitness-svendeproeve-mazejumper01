@@ -24,5 +24,5 @@ export function proxy(request) {
 // export default function proxy(request) { ... }
  
 export const config = {
-  matcher: ['/kalender/:path*', '/courses/:path*'],
+  matcher: ['/kalender/:path*',],
 }

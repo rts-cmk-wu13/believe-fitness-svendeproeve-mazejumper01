@@ -47,8 +47,8 @@ export async function getTestimonials() {
 
 
 //Sender besked afsted
-export async function postMesss(data) {
-  const response = await fetch(`${BASE_URL}/api/v1/messs`, {
+export async function postMessages(data) {
+  const response = await fetch(`${BASE_URL}/api/v1/messages`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
@@ -96,7 +96,32 @@ export async function getUserById(id, token) {
   });
 
   if (!response.ok) {
-    throw new Error("Kunne ikke hente bruger");
+    throw new Error("Could not fetch user");
+  }
+
+  return response.json();
+}
+
+
+// Henter en enkel trainer med id
+export async function getTrainerById(id) {
+  const response = await fetch(`${BASE_URL}/api/v1/trainers/${id}`, {
+    cache: "no-store"
+  });
+
+  if (!response.ok) {
+    throw new Error("Could not fetch trainer");
+  }
+
+  return response.json();
+}
+
+// Henter alle trainers
+export async function getAllTrainers() {
+  const response = await fetch(`${BASE_URL}/api/v1/trainers`);
+
+  if (!response.ok) {
+    throw new Error("Could not fetch trainers");
   }
 
   return response.json();

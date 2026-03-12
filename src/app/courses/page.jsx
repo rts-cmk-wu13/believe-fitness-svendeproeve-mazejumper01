@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { getAllCourses } from "@/lib/dal";
 import CourseCard from "@/components/CourseCard";
+import DrawerMenu from "@/components/DrawerMenu";
 
 export default function Page() {
   const [randomCourse, setRandomCourse] = useState(null);
@@ -28,7 +29,9 @@ export default function Page() {
 
   return (
     <main className="grid grid-cols-[10px_1fr_10px] pb-20">
-      <section className="w-full flex flex-col col-start-2 gap-10 max-w-3xl overflow-hidden">
+      <section className="w-full flex flex-col col-start-2 gap-10 max-w-3xl mt-5 overflow-hidden">
+
+        <DrawerMenu />
 
         <h1 className="text-3xl font-bold">Classes</h1>
 

@@ -11,7 +11,7 @@ export default function CurrentCourseCard({ course, isAdmin }) {
     if (isAdmin) {
       async function fetchFullCourse() {
         try {
-          const data = await getCourseById(course.id); // use DAL helper
+          const data = await getCourseById(course.id);
           setFullCourse(data);
         } catch (error) {
           console.error("Failed to fetch course data:", error);

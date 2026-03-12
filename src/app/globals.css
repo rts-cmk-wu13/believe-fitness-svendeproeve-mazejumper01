@@ -49,3 +49,7 @@ body {
 .highlight {
   @apply  text-[#f1c40e]
 }
+
+.b-prim {
+  @apply  bg-[#f1c40e]
+}

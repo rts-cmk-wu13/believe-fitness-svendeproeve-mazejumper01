@@ -2,6 +2,7 @@
 
 import { getCourseById, getUserById } from "@/lib/dal"
 import { cookies } from "next/headers"
+import DrawerMenu from "@/components/DrawerMenu";
 
 import Image from "next/image";
 
@@ -19,18 +20,19 @@ export default async function Page({ params }) {
 
   return (
     <>
-    <main className="grid grid-cols-[10px_1fr_10px]">
-      <h1 className="col-start-2 text-center text-2xl py-5">Min profil</h1>
+    <main className="grid grid-cols-[20px_1fr_20px]">
+       <DrawerMenu />
+      <h1 className="col-start-2  text-2xl py-5">My profile</h1>
     
-      <div className="bg-white col-start-1 col-span-3 text-3xl text-black flex flex-col gap-4 justify-center items-center rounded shadow">
-        <Image src="/assets/user.svg" width={64} height={64} alt="Bruger ikon" />
-        <p>Navn: {user.userFirstName} {user.userLastName}</p>
-        <p>Rank: {user.role}</p>
+      <div className="grid grid-cols-[20px_4rem_1fr_20px] col-start-1 col-span-3  justify-center items-center ">
+        <Image className="col-start-2 b-prim p-2 rounded-full row-span-2" src="/assets/user.svg" width={60} height={60} alt="Bruger ikon" />
+        <p className="col-start-3 text-xl ps-2">Name: {user.userFirstName} {user.userLastName}</p>
+        <p  className="col-start-3 ps-2">Role: {user.role}</p>
       </div>
 
       <div className="col-start-2 pt-8 flex flex-col gap-8"> 
-        <h2 className="text-2xl ">{course.name}</h2>
-        <h3 className="text-lg">Deltagere:</h3>
+        <h2 className="text-2xl font-bold ">{course.className}</h2>
+        <h3 className="font-bold">Participants:</h3>
         {course.users && course.users.length > 0 ? (
           <ul>
             {course.users.map(user => (
@@ -47,7 +49,7 @@ export default async function Page({ params }) {
             ))}
           </ul>
         ) : (
-          <p>Ingen deltagere endnu</p>
+          <p>No Participants yet.</p>
         )}
       </div>
     </main>

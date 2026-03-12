@@ -3,6 +3,8 @@ import { getNews } from "../../lib/dal";
 import NyhedsForm from "@/components/nyhedsform/NyhedsForm";
 import Slider from "@/components/Slider";
 import KontaktForm from "@/components/kontaktform/KontaktForm";
+import Link from "next/link";
+import DrawerMenu from "@/components/DrawerMenu";
 
 export default async function Home() {
 
@@ -11,12 +13,18 @@ export default async function Home() {
     <>
   <header className="relative min-h-102.5 w-full bg-[url('/assets/heroimg.png')] bg-cover bg-center grid grid-cols-[20px_1fr_20px] justify-between items-end col-span-full">
 
-    <div className="col-start-2 mb-10">
+    <div className="col-start-2 mb-10 mt-5">
+      <DrawerMenu />
       <h1 className="text-4xl mb-3 font-bold text-[#f1c40e]">Welcome to Belive Fitness</h1>
 
       <div className=" flex gap-4 ">
-        <button className=" btn w-28.25 h-13.25 ">classes</button>
-        <button className="btn w-28.25 h-13.25">log in</button>
+        
+        <Link href="/courses">
+          <button className=" btn w-28.25 h-13.25 ">classes</button>
+        </Link>
+        <Link href="/login">
+          <button className="btn w-28.25 h-13.25">log in</button>
+        </Link>
       </div>
     </div>
 

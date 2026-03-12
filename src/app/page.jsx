@@ -11,12 +11,12 @@ export default function SplashPage() {
   const [bgImage, setBgImage] = useState(images[0]);
   const [showContent, setShowContent] = useState(false);
 
-  // Vælg tilfældigt billede
+
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * images.length);
     setBgImage(images[randomIndex]);
 
-    // Sæt animationen til at starte efter 700ms
+ 
     const timer = setTimeout(() => setShowContent(true), 700);
     return () => clearTimeout(timer);
   }, []);
