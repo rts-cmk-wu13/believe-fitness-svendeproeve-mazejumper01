@@ -39,11 +39,11 @@ body {
 }
 
 .inpt-s {
-  @apply  border-gray-500 border rounded-full cursor-text p-3
+  @apply  border-gray-500 border rounded-full cursor-text py-3 ps-5
 }
 
 .inpt-m {
-  @apply  border-gray-500 border rounded-2xl cursor-text p-3
+  @apply  border-gray-500 border rounded-2xl cursor-text py-3 ps-5
 }
 
 .highlight {

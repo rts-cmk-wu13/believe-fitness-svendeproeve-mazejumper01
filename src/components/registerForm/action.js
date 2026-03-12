@@ -4,39 +4,60 @@ import { redirect } from "next/navigation"
 
 const registerSchema = z
   .object({
-    userFirstName: z.string().min(1, "Fornavn er påkrævet."),
-    userLastName: z.string().min(1, "Efternavn er påkrævet."),
-    username: z.string().min(3, "Brugernavn skal være mindst 3 karakterer."),
-    password: z.string().min(4, "Adgangskode skal være mindst 4 karakterer."),
-    confirmPassword: z.string().min(4, "Gentag adgangskode skal udfyldes."),
+    userFirstName: z.string().min(1, "First name is required."),
+    userLastName: z.string().min(1, "Last name is required."),
+    username: z.string().min(3, "Username needs at least 3 characters."),
+    password: z.string().min(4, "Password needs at least 4 characters."),
+    confirmPassword: z.string().min(4, "Please repeat the password."),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Adgangskoderne matcher ikke.",
+    message: "Passwords dont match.",
     path: ["confirmPassword"],
   })
 
 export async function registerUser(prevState, formData) {
-  const userFirstName = formData.get("userFirstName")
-  const userLastName = formData.get("userLastName")
+
+  const name = formData.get("name")
   const username = formData.get("username")
   const password = formData.get("password")
   const confirmPassword = formData.get("confirmPassword")
 
-  const result = registerSchema.safeParse({ userFirstName, userLastName, username, password, confirmPassword })
+  const nameParts = name?.trim().split(" ") || []
+
+ 
+  if (nameParts.length < 2) {
+    return {
+      values: { name, username, password, confirmPassword },
+      errors: { name: ["Please write your full name."] },
+    }
+  }
+
+  const userFirstName = nameParts[0]
+  const userLastName = nameParts.slice(1).join(" ")
+
+  const result = registerSchema.safeParse({
+    userFirstName,
+    userLastName,
+    username,
+    password,
+    confirmPassword,
+  })
 
   if (!result.success) {
     return {
-      values: { userFirstName, userLastName, username, password, confirmPassword },
+      values: { name, username, password, confirmPassword },
       errors: z.flattenError(result.error).fieldErrors,
     }
   }
 
   try {
     await postRegister({ userFirstName, userLastName, username, password })
-    return redirect("/login")
+
+        return { success: true }
+
   } catch (error) {
     return {
-      values: { userFirstName, userLastName, username, password, confirmPassword },
+      values: { name, username, password, confirmPassword },
       errors: { form: [error.message] },
     }
   }
