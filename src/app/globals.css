@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #171717;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-poppins);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #0a0a0a;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn {
+  @apply bg-[#f1c40e] h-12 font-bold uppercase text-black rounded-full ;
+
+}
+
+.info-h3 {
+  @apply  capitalize font-bold text-black rounded-full text-2xl ;
+
+}
+
+.arrow {
+  @apply w-10.75 h-10.75 border-white border rounded-full flex items-center justify-center cursor-pointer  text-2xl font-bold
+}
+
+.inpt-s {
+  @apply  border-gray-500 border rounded-full cursor-text py-3 ps-5
+}
+
+.inpt-m {
+  @apply  border-gray-500 border rounded-2xl cursor-text py-3 ps-5
+}
+
+.highlight {
+  @apply  text-[#f1c40e]
+}
+
+.b-prim {
+  @apply  bg-[#f1c40e]
+}
+
+.page-grid {
+  @apply grid grid-cols-[20px_1fr_20px];
+}
