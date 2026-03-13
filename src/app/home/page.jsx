@@ -5,10 +5,15 @@ import Slider from "@/components/Slider";
 import KontaktForm from "@/components/kontaktform/KontaktForm";
 import Link from "next/link";
 import DrawerMenu from "@/components/DrawerMenu";
+import { cookies } from "next/headers";
+import { logOutUser } from "@/lib/logout";
 
 export default async function Home() {
 
   const news = await getNews();
+
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken");
   return (
     <>
   <header className="relative min-h-102.5 w-full bg-[url('/assets/heroimg.png')] bg-cover bg-center page-grid justify-between items-end col-span-full">
@@ -22,9 +27,14 @@ export default async function Home() {
         <Link href="/courses">
           <button className=" btn w-28.25 h-13.25 ">classes</button>
         </Link>
+       {accessToken ? (
+        <form action={logOutUser}>
+          <button className="btn w-28.25 h-13.25">log out</button>
+        </form>
+        ) : (
         <Link href="/login">
           <button className="btn w-28.25 h-13.25">log in</button>
-        </Link>
+        </Link>)}
       </div>
     </div>
 

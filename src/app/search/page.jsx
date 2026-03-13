@@ -85,7 +85,7 @@ export default function Page() {
           <>
             {filteredCourses.length === 0 ? (
               <p>
-                Your search did not give any results. Try to search for something else.
+                Try to search for something else
               </p>
             ) : (
               <div className="w-full overflow-x-auto">

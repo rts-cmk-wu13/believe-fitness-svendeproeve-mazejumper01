@@ -41,7 +41,7 @@ export default async function Page({ params }) {
         <h2 className="text-2xl font-bold ">{course.className}</h2>
         <h3 className="font-bold">Participants:</h3>
         {course.users && course.users.length > 0 ? (
-          <ul>
+          <ul className="flex flex-col gap-5">
             {course.users.map(user => (
               <li className="inpt-s p-4 flex gap-5" key={user.id}>
                 <div className="flex gap-2">

@@ -197,6 +197,13 @@ export async function joinCourse(courseId) {
 
   const course = await courseResponse.json()
 
+  const participants = course.users?.length || 0
+const isFull = participants >= course.maxParticipants
+
+if (isFull) {
+  throw new Error("Denne klasse er fuld")
+}
+
   //Sørger for at man ikke kan tilmedle to classes på samme dag
 const hasSameWeekday = user.classes?.some(
   (c) => c.classDay.trim().toLowerCase() === course.classDay.trim().toLowerCase()
